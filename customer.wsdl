@@ -1,0 +1,178 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="file:///C:/Users/63961/Downloads/maam%20greta/group%20soup%20ui/customer.wsdl"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             name="customer"
+             targetNamespace="file:///C:/Users/63961/Downloads/maam%20greta/group%20soup%20ui/customer.wsdl">
+
+  <types>
+     <xs:schema targetNamespace="file:///C:/Users/63961/Downloads/maam%20greta/group%20soup%20ui/customer.wsdl"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                elementFormDefault="qualified">
+      <xs:import namespace="file:///C:/Users/63961/Downloads/maam%20greta/group%20soup%20ui/customer.wsdl" schemaLocation="CustomerService.xsd"/>
+      <xs:complexType name="Customer">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <!-- Add more elements as needed -->
+        </xs:sequence>
+      </xs:complexType>
+      <!-- Define the structure of the input message for CreateCustomer -->
+      <xs:element name="CreateCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="customer" type="tns:Customer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the output message for CreateCustomer -->
+      <xs:element name="CreateCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="success" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the input message for GetCustomer -->
+      <xs:element name="GetCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="customerId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the output message for GetCustomer -->
+      <xs:element name="GetCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="customer" type="tns:Customer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the input message for UpdateCustomer -->
+      <xs:element name="UpdateCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="customer" type="tns:Customer"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the output message for UpdateCustomer -->
+      <xs:element name="UpdateCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="success" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the input message for DeleteCustomer -->
+      <xs:element name="DeleteCustomerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="customerId" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- Define the structure of the output message for DeleteCustomer -->
+      <xs:element name="DeleteCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="success" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+
+  <message name="CreateCustomerRequest">
+    <part name="parameters" element="tns:CreateCustomerRequest"/>
+  </message>
+  <message name="CreateCustomerResponse">
+    <part name="parameters" element="tns:CreateCustomerResponse"/>
+  </message>
+  <message name="GetCustomerRequest">
+    <part name="parameters" element="tns:GetCustomerRequest"/>
+  </message>
+  <message name="GetCustomerResponse">
+    <part name="parameters" element="tns:GetCustomerResponse"/>
+  </message>
+  <message name="UpdateCustomerRequest">
+    <part name="parameters" element="tns:UpdateCustomerRequest"/>
+  </message>
+  <message name="UpdateCustomerResponse">
+    <part name="parameters" element="tns:UpdateCustomerResponse"/>
+  </message>
+  <message name="DeleteCustomerRequest">
+    <part name="parameters" element="tns:DeleteCustomerRequest"/>
+  </message>
+  <message name="DeleteCustomerResponse">
+    <part name="parameters" element="tns:DeleteCustomerResponse"/>
+  </message>
+
+  <portType name="customerPortType">
+    <operation name="CreateCustomer">
+      <input message="tns:CreateCustomerRequest"/>
+      <output message="tns:CreateCustomerResponse"/>
+    </operation>
+    <operation name="GetCustomer">
+      <input message="tns:GetCustomerRequest"/>
+      <output message="tns:GetCustomerResponse"/>
+    </operation>
+    <operation name="UpdateCustomer">
+      <input message="tns:UpdateCustomerRequest"/>
+      <output message="tns:UpdateCustomerResponse"/>
+    </operation>
+    <operation name="DeleteCustomer">
+      <input message="tns:DeleteCustomerRequest"/>
+      <output message="tns:DeleteCustomerResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="customerBinding" type="tns:customerPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CreateCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="customerService">
+    <port name="customerPort" binding="tns:customerBinding">
+      <soap:address location="file:///C:/Users/63961/Downloads/maam%20greta/group%20soup%20ui/customer.wsdl"/>
+    </port>
+  </service>
+
+</definitions>
